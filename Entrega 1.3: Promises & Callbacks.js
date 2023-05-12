@@ -13,16 +13,13 @@ const result = new Promise((resolve, reject) => {
 })
 
 result
-    .then(res => {
+    .then(resolve => {
         console.log("It is resolved!");
-        console.log(res);
-
+        console.log(resolve);
     })
-    .catch(err => {
-        console.log(err.message);
+    .catch(error => {
+        console.log('Error:', error.message);
     })
-
-
 
 // 2- Crea una arrow function que rebi un paràmetre i una funció callback i li passi a la funció un missatge o un altre (que s'imprimirà per consola) en funció del paràmetre rebut.
 
@@ -32,6 +29,7 @@ const userInfo = (userName, callback) => {
     callback(userName);
 }
 
+// testing
 userInfo('Galis', welcomeMessage);
 
 
@@ -61,7 +59,7 @@ let salaries = [{
     salary: 2000
 }];
 
-const getEmployee = (idToFind) => {
+export const getEmployee = (idToFind) => {
     return new Promise((resolve, reject) => {
         let findEmployeeID = employees.find(({ id }) => id === idToFind);
         if (findEmployeeID) {
@@ -71,16 +69,29 @@ const getEmployee = (idToFind) => {
         }
     })
 }
-/*getEmployee(1).then(resolve => { console.log(resolve); }).catch(error => { console.log(error.message); });
-getEmployee(2).then(resolve => { console.log(resolve); }).catch(error => { console.log(error.message); });
-getEmployee(3).then(resolve => { console.log(resolve); }).catch(error => { console.log(error.message); });
-getEmployee(4).then(resolve => { console.log(resolve); }).catch(error => { console.log(error.message); });
-getEmployee(5).then(resolve => { console.log(resolve); }).catch(error => { console.log(error.message); }); */
+// TESTING
 
+// if id exists
+getEmployee(1)
+    .then(findEmployeeID => {
+        console.log(findEmployeeID);
+    })
+    .catch(error => {
+        console.log('Error:', error.message);
+    });
+
+// if id doesn't exists
+getEmployee(5)
+    .then(resolve => {
+        console.log(resolve);
+    })
+    .catch(error => {
+        console.log('Error:', error.message);
+    });
 
 // 2- Crea una altra arrow function getSalary() similar a l'anterior que rebi com a paràmetre un objecte employee i retorni el seu salari.
 
-const getSalary = (employee) => {
+export const getSalary = (employee) => {
     return new Promise((resolve, reject) => {
         let findEmployeeSalary = salaries.find(({ id }) => id == employee.id);
         if (findEmployeeSalary) {
@@ -90,27 +101,46 @@ const getSalary = (employee) => {
         }
     })
 }
-/* getSalary(employees[0]).then(resolve => { console.log(resolve); }).catch(error => { console.log(error.message); });
-getSalary(employees[1]).then(resolve => { console.log(resolve); }).catch(error => { console.log(error.message); });
-getSalary(employees[2]).then(resolve => { console.log(resolve); }).catch(error => { console.log(error.message); });
-getSalary({ id: 7, name: 'Ricardo Porto' }).then(resolve => { console.log(resolve); }).catch(error => { console.log(error.message); });
-getSalary({ id: 8, name: 'Yao Ming' }).then(resolve => { console.log(resolve); }).catch(error => { console.log(error.message); }); */
+// TESTING
 
+// if employee exists
+getSalary(employees[0])
+    .then(findEmployeeSalary => {
+        console.log(findEmployeeSalary);
+    })
+    .catch(error => {
+        console.log('Error:', error.message);
+    });
+// if employee doesn't exist
+getSalary({ id: 8, name: 'Yao Ming' })
+    .then(resolve => {
+        console.log(resolve);
+    })
+    .catch(error => {
+        console.log('Error:', error.message);
+    });
 
-// 3- Invoca la primera funció getEmployee() i després getSalary() niant l'execució de les dues promises de manera que es retorni per la consola el nom de l'empleat/da i el seu salari.
+// 3- Invoca la primera funció getEmployee() i després getSalary() guiant l'execució de les dues promises de manera que es retorni per la consola el nom de l'empleat/da i el seu salari.
 
-/* getEmployee(1).then(resolve => { console.log(resolve); }).catch(error => { console.log(error.message); });
-getSalary(employees[0]).then(resolve => { console.log(resolve); }).catch(error => { console.log(error.message); }); */
 getEmployee(3)
-    .then(
-        resolve => {
-            console.log(getSalary(resolve));
-        })
-    .catch(error => { console.log(error.message); });
-
-// *** PONER EL getSalary COMO .then
+    .then((findEmployeeID) => {
+        return getSalary(findEmployeeID);
+    })
+    .then((findEmployeeSalary) => {
+        console.log(findEmployeeSalary);
+    });
 
 // NIVELL 3
 
 // 1- Fixa un element catch a la invocació del nivell anterior que capturi qualsevol error i el mostri per la consola.
 
+getEmployee(5)
+    .then((findEmployeeID) => {
+        return getSalary(findEmployeeID);
+    })
+    .then((findEmployeeSalary) => {
+        console.log(findEmployeeSalary);
+    })
+    .catch((error) => {
+        console.log('Error:', error.message);
+    });

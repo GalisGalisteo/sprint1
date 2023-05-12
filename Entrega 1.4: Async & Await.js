@@ -24,7 +24,11 @@ let salaries = [{
     salary: 2000
 }];
 
-/* const getEmployee = (idToFind) => {
+// *** BETTER IMPORT FROM OTHER FILE ***
+// import { getEmployee } from "./Entrega 1.3: Promises & Callbacks"; (not working, don't know why!)
+// import { getSalary } from "./Entrega 1.3: Promises & Callbacks"; (not working, don't know why!)
+
+const getEmployee = (idToFind) => {
     return new Promise((resolve, reject) => {
         let findEmployeeID = employees.find(({ id }) => id === idToFind);
         if (findEmployeeID) {
@@ -46,105 +50,121 @@ const getSalary = (employee) => {
     })
 }
 
-getEmployee(2)
-    .then(
-        resolve => {
-            console.log(getSalary(resolve));
-        })
-    .catch(error => { console.log(error.message); }); */
+const getEmployeeAndSalary = async (id) => {
+    try{
+        let employee = await getEmployee(id);
+        let salary = await getSalary(employee);
+        console.log(salary);
+    } catch(error) {
+        console.log('Error (getEmployeeAndSalary):', error.message);
+    }
+}
 
+// TEST
+
+// if id is a number
+getEmployeeAndSalary(3);
+
+// if id is NOT a number
+getEmployeeAndSalary('hola');
 
 // 2- Crea una nova funció asíncrona que cridi a una altra que retorni una Promise que efectuï la seva funció resolve() després de 2 segons de la seva invocació.
 
-/* const newAsyncFunction1 = async () => {
-    newAsyncFunction2();
-    let result = await promise;
-    console.log(result);
-}
-const newAsyncFunction2 = async () => {
-    return promise = new Promise((resolve, reject) => {
-        setTimeout(() => resolve("Promise complited!"), 2000);
-    })
-}
-newAsyncFunction1(); */
-
-/*
-OTRA OPCIÓN SIN RETURN EN LA SEGUNDA ASYNC:
-
 const newAsyncFunction1 = async () => {
-    newAsyncFunction2();
+    try {
+        let result = await newAsyncFunction2();
+        console.log(result);
+    } catch (error) {
+        console.log('Error (newAsyncFunction1):', error.message);
+    }
 }
+let asyncTest = true;
 
 const newAsyncFunction2 = async () => {
-    let promise = new Promise((resolve, reject) => {
-        setTimeout(() => resolve("Promise complited!"), 2000);
+    return new Promise((resolve, reject) => {
+        if (asyncTest) {
+            setTimeout(() => resolve("Promise complited!"), 2000);
+        } else {
+            reject(new Error("Test should be true!"));
+        }
     })
-    let result = await promise;
-    console.log(result);
 }
+// test
+
+// if it's true
 newAsyncFunction1();
-*/
+
+// if it's NOT true
+asyncTest = false;
+newAsyncFunction1();
 
 // NIVELL 2
 
 // 1.1- Crea una funció que retorni el doble del número que li passa com a paràmetre després de 2 segons.
 
-/* const functionDouble = async (num) => {
-    let promise = new Promise((resolve, reject) => {
-        setTimeout(() => resolve(num * 2), 2000);
-    })
-    let result = await promise;
-    console.log(result);
-} */
-
-const functionDouble = async (num) => {
-    new Promise((resolve, reject) => {
-        setTimeout(() => resolve(num * 2), 2000);
+// Creating the function
+const functionDouble = (num) => {
+    return new Promise((resolve, reject) => {
+        if (typeof num == 'number') {
+            setTimeout(() => resolve(num * 2), 2000);
+        } else {
+            reject(new Error(`The value "${num}" is not a number`));
+        }
     })
 }
-const calculateDouble = async () => {
+// Testing the async function
+const calculateDouble = async (num) => {
     try {
-      const result = await functionDouble(5);
-      console.log(result);
+        const result = await functionDouble(num);
+        console.log(result);
     } catch (error) {
-      console.log('Error:', error);
+        console.log('Error (calculateDouble):', error.message);
     }
-  };
-  
-calculateDouble();
+};
+
+// if it's a number
+calculateDouble(5);
+
+// if it's NOT a number
+calculateDouble('hola');
+
 
 // 1.2- Crea una altra funció que rebi tres números i calculi la suma dels seus dobles fent servir la funció anterior.
 
-const functionSum = (a, b, c) => {
-    
+/* const functionSum = async (a, b, c) => {
+    try {
+        const result1 = await functionDouble(a);
+        const result2 = await functionDouble(b);
+        const result3 = await functionDouble(c);
+        const resultTotal= result1 + result2 + result3;
+        console.log(resultTotal);
+    } catch (error) {
+        console.log('Error:', error);
+    }
+} */
+// BETTER LIKE THAT:
+const functionSum = async (a, b, c) => {
+    try {
+        let total = 0;
+        let numInput = [a, b, c];
+        for (let i = 0; i < numInput.length; i++) {
+            total += await functionDouble(numInput[i]);
+        }
+        console.log(total);
+    } catch (error) {
+        console.log('Error (functionSum):', error.message);
+    }
 }
+
+// TEST
+
+// are numbers
 functionSum(1, 2, 3);
+
+// is not a number
+functionSum('hola', 2, 3);
 
 // NIVELL 3
 
 // 1- Força i captura tants errors com puguis dels nivells 1 i 2.
 
-
-
-
-
-/* const doubleAfter2Seconds = async (number) => {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      resolve(number * 2);
-    }, 2000);
-  });
-};
-
-// Exemple d'ús de la funció async:
-const exampleFunction = async () => {
-  try {
-    const result = await doubleAfter2Seconds(5);
-    console.log(result); // Expected output: 10 (5 * 2)
-  } catch (error) {
-    console.log(error);
-  }
-};
-
-exampleFunction();
- */

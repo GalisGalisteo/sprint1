@@ -40,37 +40,3 @@ newPerson.dirName();
 
 /// ***ASK CHAT GPT ABOUT ABSTRACT CLASS***
 
-/* function newClass() {
-    class abstractClass {
-        consutructor(propiety) {
-            this.propiety = propiety;
-        }
-    }
-    return abstractClass;
-}
-const abstractClass = newClass();
-
-const newObject = (objectName, propertyValue1, propertyValue2, propertyValue3, propertyValue4) => {
-    class AbstractClass {
-        constructor(property1, property2, property3, property4) {
-            this.property1 = property1;
-            this.property2 = property2;
-            this.property3 = property3;
-            this.property4 = property4;
-        }
-    }
-    objectName = new AbstractClass(propertyValue1, propertyValue2, propertyValue3, propertyValue4);
-    console.log(objectName);
-    return objectName;
-}
-
-newObject("object1", "1.1", "1.2", "1.3", "1.4");
-newObject("object2", "2.1", "2.2", "2.3", "2.4");
-newObject("object3", "3.1", "3.2", "3.3", "3.4");
-newObject("object4", "4.1", "4.2", "4.3", "4.4");
-
-
-const newObject = new AbstractClass("Property value 1", "Property value 2", "Property value 3", "Property value 4");
-console.log(newObject); 
-
-*/
