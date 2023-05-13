@@ -3,7 +3,7 @@
 // 1- Mostra per la consola el resultat d'una arrow function autoinvocable que sumi dos nombres.
 
 const sum = (a, b) => a + b;
-console.log(sum(2, 2));
+console.log('Nivell 1:', sum(2, 2));
 
 
 // NIVELL 2
@@ -18,7 +18,7 @@ const profileUpdate = (userName) => {
     return user;
 }
 
-console.log(profileUpdate('Galis'));
+console.log('Nivell 2.1:', profileUpdate('Galis'));
 
 // 2-  Crea una classe "Persona" que rebi un paràmetre 'nom' en ser instanciada. La classe inclourà un mètode dirNom que imprimeixi per consola el paràmetre 'nom'. Invoca el mètode dirNom des de fora de la classe.
 
@@ -27,7 +27,7 @@ class Person {
         this.name = name;
     }
     dirName() {
-        console.log(this.name);
+        console.log('Nivell 2.2:', this.name);
     }
 }
 
@@ -38,5 +38,27 @@ newPerson.dirName();
 
 // 1- Escriu una function creadora d'objectes que faci instàncies d'una classe abstracta. Invoca-la amb diferents definicions.
 
-/// ***ASK CHAT GPT ABOUT ABSTRACT CLASS***
+// creating Abstract Class
+class Animal {
+    constructor(name) {
+        this.name = name
+    }
+    hasMood() {
+        throw new Error("The dog must be in a mood!")
+    }
+}
 
+// creating function
+const dogMood = (name, mood) => {
+    class Dog extends Animal {
+        hasMood() {
+            console.log('Nivell 3:', `${this.name} is ${mood}.`);
+        }
+    }
+    const dog = new Dog(name);
+    dog.hasMood();
+}
+// testing
+dogMood("Sam", "happy");
+dogMood("Phoebe", "loving");
+dogMood("Willy", "playful");
