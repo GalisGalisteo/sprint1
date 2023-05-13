@@ -25,30 +25,8 @@ let salaries = [{
 }];
 
 // *** BETTER IMPORT FROM OTHER FILE ***
-// import { getEmployee } from "./Entrega 1.3: Promises & Callbacks"; (not working, don't know why!)
-// import { getSalary } from "./Entrega 1.3: Promises & Callbacks"; (not working, don't know why!)
-
-const getEmployee = (idToFind) => {
-    return new Promise((resolve, reject) => {
-        let findEmployeeID = employees.find(({ id }) => id === idToFind);
-        if (findEmployeeID) {
-            resolve(findEmployeeID);
-        } else {
-            reject(new Error(`The id ${idToFind} doesn't exist`))
-        }
-    })
-}
-
-const getSalary = (employee) => {
-    return new Promise((resolve, reject) => {
-        let findEmployeeSalary = salaries.find(({ id }) => id == employee.id);
-        if (findEmployeeSalary) {
-            resolve(`The employee ${employee.name} has a salary of $${findEmployeeSalary.salary}`);
-        } else {
-            reject(new Error(`The employee doesn't exist`))
-        }
-    })
-}
+// importing functions
+const { getEmployee, getSalary } = require("./Entrega 1.3: Promises & Callbacks");
 
 const getEmployeeAndSalary = async (id) => {
     try{

@@ -59,7 +59,7 @@ let salaries = [{
     salary: 2000
 }];
 
-export const getEmployee = (idToFind) => {
+const getEmployee = (idToFind) => {
     return new Promise((resolve, reject) => {
         let findEmployeeID = employees.find(({ id }) => id === idToFind);
         if (findEmployeeID) {
@@ -69,6 +69,7 @@ export const getEmployee = (idToFind) => {
         }
     })
 }
+
 // TESTING
 
 // if id exists
@@ -91,7 +92,7 @@ getEmployee(5)
 
 // 2- Crea una altra arrow function getSalary() similar a l'anterior que rebi com a paràmetre un objecte employee i retorni el seu salari.
 
-export const getSalary = (employee) => {
+const getSalary = (employee) => {
     return new Promise((resolve, reject) => {
         let findEmployeeSalary = salaries.find(({ id }) => id == employee.id);
         if (findEmployeeSalary) {
@@ -119,6 +120,8 @@ getSalary({ id: 8, name: 'Yao Ming' })
     .catch(error => {
         console.log('Error:', error.message);
     });
+// Exporting functions
+module.exports = { getEmployee, getSalary };
 
 // 3- Invoca la primera funció getEmployee() i després getSalary() guiant l'execució de les dues promises de manera que es retorni per la consola el nom de l'empleat/da i el seu salari.
 
