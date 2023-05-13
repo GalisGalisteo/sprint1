@@ -6,7 +6,7 @@ function showName(userName) {
     console.log(userName);
 }
 
-showName('Galis');
+showName('Nivell 1:', 'Galis');
 
 
 // NIVELL 2
@@ -16,7 +16,7 @@ showName('Galis');
 const userName = 'Galis';
 const userSurnames = 'Galisteo Mendoza';
 
-console.log(`My name is ${userName} and my surnames are ${userSurnames}.`);
+console.log('Nivell 2.1:', `My name is ${userName} and my surnames are ${userSurnames}.`);
 
 // 2- Invoca una funció que retorni un valor des de dins d'una template literal.
 
@@ -24,7 +24,7 @@ function userAge(yearBorn, yearToday) {
     return yearToday - yearBorn;
 }
 
-console.log(`My age is ${userAge(1983, 2023)}.`);
+console.log('Nivell 2.2:', `My age is ${userAge(1983, 2023)}.`);
 
 // NIVELL 3
 
@@ -42,6 +42,7 @@ function arrFunctions() {
     }
 }
 function callFunctionsArr() {
+    console.log('Nivell 3.1:')
     arrFunctions();
     for (let i = 0; i < arr10Functions.length; i++) {
         arr10Functions[i]();
@@ -52,5 +53,5 @@ callFunctionsArr();
 // 2- Crea una funció anònima autoinvocable igualada a una variable que mostri per consola el nom de l'usuari/ària a rebut com a paràmetre.
 
 (function (userName) {
-    console.log("ejercicio2", userName);
+    console.log('Nivell 3.2:', userName);
 })('Galis');
