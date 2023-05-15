@@ -10,13 +10,8 @@ console.log('Nivell 1:', sum(2, 2));
 
 // 1- Crea una arrow function que, rebent un paràmetre, retorni un objecte amb un atribut que tingui com a valor el paràmetre rebut.
 
-const profileUpdate = (userName) => {
-    let user = {
-        "name": "",
-    };
-    user.name = userName;
-    return user;
-}
+const profileUpdate = name => ({ name })
+
 
 console.log('Nivell 2.1:', profileUpdate('Galis'));
 
@@ -40,13 +35,22 @@ newPerson.dirName();
 
 // creating Abstract Class
 class Animal {
-    constructor(name) {
+    constructor(name, mood) {
         this.name = name
+        this.mood = mood
+        throw new Error("Can not be instancied")
     }
+
     hasMood() {
-        throw new Error("The dog must be in a mood!")
+        console.log('Nivell 3:', `${this.name} is ${this.mood}.`);
     }
 }
+function createAnimals () {
+    
+    // const dog = new Animal('Sam', 'happy')
+}
+
+
 
 // creating function
 const dogMood = (name, mood) => {

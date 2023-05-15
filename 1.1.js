@@ -52,6 +52,6 @@ callFunctionsArr();
 
 // 2- Crea una funció anònima autoinvocable igualada a una variable que mostri per consola el nom de l'usuari/ària a rebut com a paràmetre.
 
-(function (userName) {
+const myFun = (function (userName) {
     console.log('Nivell 3.2:', userName);
 })('Galis');

@@ -26,7 +26,7 @@ let salaries = [{
 
 // *** BETTER IMPORT FROM OTHER FILE ***
 // importing functions
-const { getEmployee, getSalary } = require("./Entrega 1.3: Promises & Callbacks");
+const { getEmployee, getSalary } = require("./1.3");
 
 const getEmployeeAndSalary = async (id) => {
     try{
@@ -48,17 +48,16 @@ getEmployeeAndSalary('hola');
 
 // 2- Crea una nova funció asíncrona que cridi a una altra que retorni una Promise que efectuï la seva funció resolve() després de 2 segons de la seva invocació.
 
-const newAsyncFunction1 = async () => {
+const newAsyncFunction1 = async (callback) => {
     try {
-        let result = await newAsyncFunction2();
+        let result = await callback();
         console.log(result);
     } catch (error) {
         console.log('Error (newAsyncFunction1):', error.message);
     }
 }
-let asyncTest = true;
 
-const newAsyncFunction2 = async () => {
+const newAsyncFunction2 = (asyncTest) => {
     return new Promise((resolve, reject) => {
         if (asyncTest) {
             setTimeout(() => resolve("Promise complited!"), 2000);
@@ -70,11 +69,10 @@ const newAsyncFunction2 = async () => {
 // test
 
 // if it's true
-newAsyncFunction1();
+newAsyncFunction1( () => newAsyncFunction2(true) );
 
 // if it's NOT true
-asyncTest = false;
-newAsyncFunction1();
+newAsyncFunction1( () => newAsyncFunction2(false) );
 
 // NIVELL 2
 
@@ -83,11 +81,8 @@ newAsyncFunction1();
 // Creating the function
 const functionDouble = (num) => {
     return new Promise((resolve, reject) => {
-        if (typeof num == 'number') {
-            setTimeout(() => resolve(num * 2), 2000);
-        } else {
-            reject(new Error(`The value "${num}" is not a number`));
-        }
+        if (typeof num !== 'number') reject(new Error(`The value "${num}" is not a number`));
+        setTimeout(() => resolve(num * 2), 2000);
     })
 }
 // Testing the async function
@@ -121,12 +116,12 @@ calculateDouble('hola');
     }
 } */
 // BETTER LIKE THAT:
-const functionSum = async (a, b, c) => {
+const functionSum = async (...args) => {
     try {
         let total = 0;
-        let numInput = [a, b, c];
-        for (let i = 0; i < numInput.length; i++) {
-            total += await functionDouble(numInput[i]);
+        
+        for (let i = 0; i < args.length; i++) {
+            total += await functionDouble(args[i]);
         }
         console.log(total);
     } catch (error) {
@@ -145,4 +140,3 @@ functionSum('hola', 2, 3);
 // NIVELL 3
 
 // 1- Força i captura tants errors com puguis dels nivells 1 i 2.
-
