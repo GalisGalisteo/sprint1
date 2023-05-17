@@ -34,25 +34,23 @@ newPerson.dirName();
 // NIVELL 3
 
 // 1- Escriu una function creadora d'objectes que faci instàncies d'una classe abstracta. Invoca-la amb diferents definicions.
-
-// creating Abstract Class
 class Animal {
     constructor(name, mood) {
-        this.name = name
-        this.mood = mood
-        throw new Error("Can not be instancied")
+        this.name = name;
+        this.mood = mood;
+        throw new Error("Can not be instancied");
+    }
+    hasMood() {
+        console.log('Nivell 3:', `${this.name} is ${this.mood}.`);
     }
 }
 
-Animal.prototype.hasMood = function () {
-    console.log('Nivell 3:', `${this.name} is ${this.mood}.`);
-}
 function CreateAnimals(name, mood) {
-    this.name = name;
-    this.mood = mood;
+    const animal = Object.create(Animal.prototype);
+    animal.name = name;
+    animal.mood = mood;
+    return animal;
 }
-
-CreateAnimals.prototype = Object.create(Animal.prototype);
 
 const dog = new CreateAnimals('Sam', 'happy');
 dog.hasMood();
@@ -60,21 +58,3 @@ const cat = new CreateAnimals('Phoebe', 'loving');
 cat.hasMood();
 const lion = new CreateAnimals('Tom', 'sad');
 lion.hasMood();
-
-
-
-
-/* // creating function
-const dogMood = (name, mood) => {
-    class Dog extends Animal {
-        hasMood() {
-            console.log('Nivell 3:', `${this.name} is ${mood}.`);
-        }
-    }
-    const dog = new Dog(name);
-    dog.hasMood();
-}
-// testing
-dogMood("Sam", "happy");
-dogMood("Phoebe", "loving");
-dogMood("Willy", "playful"); */
