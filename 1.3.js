@@ -61,7 +61,7 @@ let salaries = [{
 
 const getEmployee = (idToFind) => {
     return new Promise((resolve, reject) => {
-        let findEmployeeID = employees.find(({ id }) => id === idToFind);
+        const findEmployeeID = employees.find(({ id }) => id === idToFind);
         if (findEmployeeID) {
             resolve(findEmployeeID);
         } else {
@@ -94,7 +94,7 @@ getEmployee(5)
 
 const getSalary = (employee) => {
     return new Promise((resolve, reject) => {
-        let findEmployeeSalary = salaries.find(({ id }) => id == employee.id);
+        const findEmployeeSalary = salaries.find(({ id }) => id == employee.id);
         if (findEmployeeSalary) {
             resolve(`The employee ${employee.name} has a salary of $${findEmployeeSalary.salary}`);
         } else {
