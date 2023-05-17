@@ -1,5 +1,7 @@
 // NIVELL 1
 
+const { prototype } = require("events");
+
 // 1- Mostra per la consola el resultat d'una arrow function autoinvocable que sumi dos nombres.
 
 const sum = (a, b) => a + b;
@@ -40,19 +42,29 @@ class Animal {
         this.mood = mood
         throw new Error("Can not be instancied")
     }
-
-    hasMood() {
-        console.log('Nivell 3:', `${this.name} is ${this.mood}.`);
-    }
-}
-function createAnimals () {
-    
-    // const dog = new Animal('Sam', 'happy')
 }
 
+Animal.prototype.hasMood = function () {
+    console.log('Nivell 3:', `${this.name} is ${this.mood}.`);
+}
+function CreateAnimals(name, mood) {
+    this.name = name;
+    this.mood = mood;
+}
+
+CreateAnimals.prototype = Object.create(Animal.prototype);
+
+const dog = new CreateAnimals('Sam', 'happy');
+dog.hasMood();
+const cat = new CreateAnimals('Phoebe', 'loving');
+cat.hasMood();
+const lion = new CreateAnimals('Tom', 'sad');
+lion.hasMood();
 
 
-// creating function
+
+
+/* // creating function
 const dogMood = (name, mood) => {
     class Dog extends Animal {
         hasMood() {
@@ -65,4 +77,4 @@ const dogMood = (name, mood) => {
 // testing
 dogMood("Sam", "happy");
 dogMood("Phoebe", "loving");
-dogMood("Willy", "playful");
+dogMood("Willy", "playful"); */
