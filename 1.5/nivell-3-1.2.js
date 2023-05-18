@@ -6,7 +6,9 @@ const fs = require('fs');
 const crypto = require('crypto');
 
 // importing key and iv
-const { key, iv } = require("./key-iv");
+const { generateKeyIV} = require("./key-iv");
+
+const {key , iv} = generateKeyIV();
 
 // creating function to encrypt and delete origin files
 const encryptAndEraseFiles = (filePathHex, filePathBase64) => {
