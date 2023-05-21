@@ -5,27 +5,34 @@
 const newAsyncFunction1 = async (callback) => {
     try {
         let result = await callback();
-        console.log(result);
-    } catch (error) {
-        console.log('Error (newAsyncFunction1):', error.message);
+        return result;
+    } catch {
+        if (typeof callback !== 'function') {
+            throw new Error("The callback should be a function.");
+        } else if (callback !== newAsyncFunction2) {
+            throw new Error(console.log("The callback function should be a newAsyncFunction2."));
+        } 
     }
 }
 
 const newAsyncFunction2 = (asyncTest) => {
     return new Promise((resolve, reject) => {
-        if (asyncTest) {
-            setTimeout(() => resolve("Promise complited!"), 2000);
+        if (typeof asyncTest !== 'boolean') {
+            reject(new Error("Test should be a boolean!"));
+        } else if (!asyncTest) {
+            reject(new Error("Test should be true!"));
         } else {
-            reject(new Error('Error (newAsyncFunction2):', "Test should be true!"));
+            setTimeout(() => resolve("Promise completed!"), 2000);
         }
     })
 }
 
-// if it's true
+
+/* // if it's true
 newAsyncFunction1(() => newAsyncFunction2(true));
 
 // ERRORS
 // if it's NOT true
-newAsyncFunction1(() => newAsyncFunction2(false));
+newAsyncFunction1(() => newAsyncFunction2(false)); */
 
-module.exports({ newAsyncFunction1, newAsyncFunction2 });
+module.exports = { newAsyncFunction1, newAsyncFunction2 };
