@@ -10,7 +10,7 @@ const newAsyncFunction1 = async (callback) => {
         if (typeof callback !== 'function') {
             throw new Error("The callback should be a function.");
         } else if (callback !== newAsyncFunction2) {
-            throw new Error(console.log("The callback function should be a newAsyncFunction2."));
+            throw new Error("The callback function should be a newAsyncFunction2.");
         } 
     }
 }
@@ -27,6 +27,10 @@ const newAsyncFunction2 = (asyncTest) => {
     })
 }
 
+const newFunction = (asyncTest) => {
+    return asyncTest;
+};
+console.log(newFunction);
 
 /* // if it's true
 newAsyncFunction1(() => newAsyncFunction2(true));
