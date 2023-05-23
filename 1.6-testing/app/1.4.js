@@ -27,11 +27,6 @@ const newAsyncFunction2 = (asyncTest) => {
     })
 }
 
-const newFunction = (asyncTest) => {
-    return asyncTest;
-};
-console.log(newFunction);
-
 /* // if it's true
 newAsyncFunction1(() => newAsyncFunction2(true));
 

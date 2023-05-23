@@ -1,7 +1,7 @@
 // 1.2 Crea els tests corresponents per verificar el funcionament de les dues funcions de l'exercici Promises i Callbacks N1 E2.
 
 // importing functions
-const { welcomeMessage, userInfo } = require('./1.2')
+const { welcomeMessage, userInfo } = require('../app/1.2')
 
 // testing welcomeMessage
 

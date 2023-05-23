@@ -1,4 +1,4 @@
-const {sum, subs, mult, divd} = require('./1.1');
+const {sum, subs, mult, divd} = require('../app/1.1');
 
 // testing sum function
 

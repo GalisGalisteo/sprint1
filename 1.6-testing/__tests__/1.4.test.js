@@ -1,7 +1,7 @@
 // 1.4 Crea els tests corresponents per verificar el funcionament de l'exercici Async / Await N1 E2.
 
 // importing functions
-const { newAsyncFunction1, newAsyncFunction2 } = require('./1.4');
+const { newAsyncFunction1, newAsyncFunction2 } = require('../app/1.4');
 
 // testing newAsyncFunction1()
 test('if callback is equal to newAsyncFunction2 should be resolved with the result variable', async () => {
@@ -11,12 +11,24 @@ test('if callback is equal to newAsyncFunction2 should be resolved with the resu
     await expect(newAsyncFunction1(() => callback)).resolves.toBe(result);
 });
 
-test('newAsyncFunction1: if callback is not a functions should throw an error', async () => {
+test('newAsyncFunction1: if callback is not defined should throw an error', async () => {
     const error = "The callback should be a function."
     await expect(newAsyncFunction1()).rejects.toThrowError(error);
+});
+test('newAsyncFunction1: if callback is a number should throw an error', async () => {
+    const error = "The callback should be a function."
     await expect(newAsyncFunction1(123)).rejects.toThrowError(error);
+});
+test('newAsyncFunction1: if callback is a string should throw an error', async () => {
+    const error = "The callback should be a function."
     await expect(newAsyncFunction1('hola')).rejects.toThrowError(error);
+});
+test('newAsyncFunction1: if callback is null should throw an error', async () => {
+    const error = "The callback should be a function."
     await expect(newAsyncFunction1(null)).rejects.toThrowError(error);
+});
+test('newAsyncFunction1: if callback is an array should throw an error', async () => {
+    const error = "The callback should be a function."
     await expect(newAsyncFunction1([1, 2, 3])).rejects.toThrowError(error);
 });
 
@@ -47,11 +59,27 @@ test('newAsyncFunction2: if asyncTest is false should throw an error', async () 
     await expect(newAsyncFunction2(asyncTest)).rejects.toThrowError(error);
 });
 
-test('newAsyncFunction2: if asyncTest is not a boolean should throw an error', async () => {
+test('newAsyncFunction2: if asyncTest is not defined should throw an error', async () => {
     const error = "Test should be a boolean!";
     await expect(newAsyncFunction2()).rejects.toThrowError(error);
+});
+
+test('newAsyncFunction2: if asyncTest is a number should throw an error', async () => {
+    const error = "Test should be a boolean!";
     await expect(newAsyncFunction2(123)).rejects.toThrowError(error);
+});
+
+test('newAsyncFunction2: if asyncTest is a string should throw an error', async () => {
+    const error = "Test should be a boolean!";
     await expect(newAsyncFunction2('hola')).rejects.toThrowError(error);
+});
+
+test('newAsyncFunction2: if asyncTest is null should throw an error', async () => {
+    const error = "Test should be a boolean!";
     await expect(newAsyncFunction2(null)).rejects.toThrowError(error);
+});
+
+test('newAsyncFunction2: if asyncTest is an array should throw an error', async () => {
+    const error = "Test should be a boolean!";
     await expect(newAsyncFunction2([1, 2, 3])).rejects.toThrowError(error);
 });

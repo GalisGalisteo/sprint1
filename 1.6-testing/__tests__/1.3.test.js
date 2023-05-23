@@ -2,7 +2,7 @@
 
 // importing funcitons
 
-const { getEmployee, getSalary } = require('./1.3')
+const { getEmployee, getSalary } = require('../app/1.3')
 
 // testing getEmployee()
 
