@@ -3,7 +3,7 @@
 // 1. Verifica mitjançant tests l'execució de l'exercici Async / Await N2 E1 utilitzant Jest Fake Timers.
 
 // importing functions
-const { functionDouble, calculateDouble } = require('./2.1');
+const { functionDouble, calculateDouble } = require('../app/2.1');
 
 // testing functionDouble() with Jest Fake Timers
 describe('functionDouble', () => {
