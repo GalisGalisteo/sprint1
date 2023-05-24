@@ -3,11 +3,20 @@
 // 2. Crea un mock que comprovi les crides al constructor de la classe Persona i al seu mètode. dirNom() en l'exercici Classes & Arrow Functions - N2 E2 i testeja que funcionen.
 
 // importing class Personand why it's used i
-const { Person } = require('../app/2.2');
+const Person = require('../app/2.2');
 
-// create the mock
+// Crea una mock function para el metodo dirNom
+const MockSayName = jest.fn();
 
-jest.mock('./2.2', () => {
+// Mock de la clase Persona
+jest.mock('../app/2.2', () => {
+  return jest.fn().mockImplementation(function (name) {
+    this.name = name;
+    this.sayName = MockSayName;
+  });
+});
+
+/* jest.mock('./2.2', () => {
     const originalModule = jest.requireActual('./2.2');
     return {
         ...originalModule,
@@ -20,14 +29,14 @@ jest.mock('./2.2', () => {
             };
         })
     }
-})
+}) */
 
-// testing
 
 test('When calling the sayName method of a Person instance with a valid name, it should return the same name', () => {
     const name = 'Galis';
     const person = new Person(name);
-    expect(person.sayName()).toBe(name);
+    person.sayName()
+    expect(MockSayName).toHaveBeenCalled();
 });
 
 test('if the name is an empty string it should catch an error', () => {
@@ -60,16 +69,8 @@ test('if the name is a number it should catch an error', () => {
     }
 })
 
-// preguntar Ara:
-
 test("Giving a name it should return an object with the name property and value given", () => {
     const name = "Galis";
     const newPerson = new Person(name);
-    expect(newPerson.name).toEqual(name);
+    expect(newPerson.name).toBe(name);
 });
-
-/* test("Giving a name it should return an object with the name property and value given", () => {
-    const name = "Galis";
-    const personConstructorMock = Person.mock.calls[0][0];
-    expect(personConstructorMock).toBe(name);
-}); */
