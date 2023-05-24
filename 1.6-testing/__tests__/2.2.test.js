@@ -3,7 +3,7 @@
 // 2. Crea un mock que comprovi les crides al constructor de la classe Persona i al seu mètode. dirNom() en l'exercici Classes & Arrow Functions - N2 E2 i testeja que funcionen.
 
 // importing class Personand why it's used i
-const { Person } = require('./2.2');
+const { Person } = require('../app/2.2');
 
 // create the mock
 
@@ -60,16 +60,15 @@ test('if the name is a number it should catch an error', () => {
     }
 })
 
-// preguntar Ara
+// preguntar Ara:
 
-test("Dado un nombre, se debe comprobar si se ha llamado con el nombre", () => {
+test("Giving a name it should return an object with the name property and value given", () => {
     const name = "Galis";
     const newPerson = new Person(name);
-    console.log(newPerson);
-    expect(newPerson).toBe(name);
+    expect(newPerson.name).toEqual(name);
 });
 
-/* test("Dado un nombre, se debe comprobar si se ha llamado con el nombre", () => {
+/* test("Giving a name it should return an object with the name property and value given", () => {
     const name = "Galis";
     const personConstructorMock = Person.mock.calls[0][0];
     expect(personConstructorMock).toBe(name);

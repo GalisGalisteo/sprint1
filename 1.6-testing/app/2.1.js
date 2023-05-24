@@ -25,4 +25,76 @@ const calculateDouble = async (num) => {
     }
 };
 
-module.exports = { functionDouble, calculateDouble };
+// 1.2- Crea una altra funció que rebi tres números i calculi la suma dels seus dobles fent servir la funció anterior.
+
+/* const functionSum = async (a, b, c) => {
+    try {
+        const result1 = await functionDouble(a);
+        const result2 = await functionDouble(b);
+        const result3 = await functionDouble(c);
+        const total= result1 + result2 + result3;
+        return total;
+    } catch (error) {
+        console.log('Error:', error);
+    }
+} */
+const functionSum = async (...args) => {
+    try {
+        let total = 0;
+        for (let i = 0; i < args.length; i++) {
+            const result = await functionDouble(args[i]);
+            total += await result;
+        }
+        return total;
+    } catch (error) {
+        for (let i = 0; i < args.length; i++) {
+            if (typeof args[i] !== 'number') {
+                throw new Error('The value is not a number')
+            }
+        }
+    }
+    };
+    /* const functionSum = async (...args) => {
+      try {
+        let total = 0;
+    
+        const promises = args.map(async (arg) => {
+          if (typeof arg !== 'number') {
+            throw new Error('The value is not a number');
+          }
+          return functionDouble(arg);
+        });
+    
+        const results = await Promise.all(promises);
+    
+        results.forEach((result) => {
+          total += result;
+        });
+    
+        return total;
+      } catch (error) {
+        console.log('Error (functionSum):', error.message);
+      }
+    }; */
+
+    /* const functionSum = async (...args) => {
+        try {
+            let total = 0;
+    
+            for (let i = 0; i < args.length; i++) {
+                if (typeof args[i] !== 'number') {
+                    throw new Error('The value is not a number')
+                }
+                const result = await functionDouble(args[i]);
+                total += result;
+            }
+            return total;
+        } catch (error) {
+            console.log('Error (functionSum):', error.message);
+        }
+    } */
+    /* console.log(functionSum(1, 2, 3));
+    console.log(functionSum('hola', 2, 3)); */
+
+
+    module.exports = { functionDouble, calculateDouble, functionSum };

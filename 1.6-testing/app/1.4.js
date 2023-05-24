@@ -27,11 +27,9 @@ const newAsyncFunction2 = (asyncTest) => {
     })
 }
 
-/* // if it's true
-newAsyncFunction1(() => newAsyncFunction2(true));
+// falta
 
-// ERRORS
-// if it's NOT true
-newAsyncFunction1(() => newAsyncFunction2(false)); */
+// Crea una altra funció que rebi tres números i calculi la suma dels seus dobles fent servir la funció anterior.
+
 
 module.exports = { newAsyncFunction1, newAsyncFunction2 };

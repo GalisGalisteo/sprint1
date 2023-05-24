@@ -1,38 +1,41 @@
-const {sum, subs, mult, divd} = require('../app/1.1');
+const { sum, subs, mult, divd } = require('../app/1.1');
 
 // testing sum function
 
-test('sum: if there is no parameters', () => {
-    expect(() => sum()).toThrow(Error);
-});
+describe('sum', () => {
+    test('if there is no parameters', () => {
+        expect(() => sum()).toThrow(Error);
+    });
 
-test('sum: if there is a letter as a parameter', () => {
-    expect(() => sum('a')).toThrow(Error);
-});
+    test('if there is a letter as a parameter', () => {
+        expect(() => sum('a')).toThrow(Error);
+    });
 
-test('sum: if there is a letter and a number as parameters', () => {
-    expect(() => sum('a', 3)).toThrow(Error);
-});
+    test('if there is a letter and a number as parameters', () => {
+        expect(() => sum('a', 3)).toThrow(Error);
+    });
 
-test('sum: if there are letters as parameters', () => {
-    expect(() => sum('a', 'b')).toThrow(Error);
-});
+    test('if there are letters as parameters', () => {
+        expect(() => sum('a', 'b')).toThrow(Error);
+    });
 
-test('sum: if there is undefined variables as a parameters', () => {
-    expect(() => sum(a, b)).toThrow(Error);
-});
+    test('if there is undefined variables as a parameters', () => {
+        expect(() => sum(a, b)).toThrow(Error);
+    });
 
-test('sum: if there is an undefined variable and a number as parameters', () => {
-    expect(() => sum(a, 1)).toThrow(Error);
-});
+    test('if there is an undefined variable and a number as parameters', () => {
+        expect(() => sum(a, 1)).toThrow(Error);
+    });
 
-test('sum: using parameters 4 and 2 equal 3', () => {
-    expect(sum(4, 2)).toBe(6);
-});
+    test('using parameters 4 and 2 equal 3', () => {
+        expect(sum(4, 2)).toBe(6);
+    });
 
-test('sum: using parameters 12 and 5 equal 13', () => {
-    expect(sum(12, 5)).toBe(17);
-});
+    test('using parameters 12 and 5 equal 13', () => {
+        expect(sum(12, 5)).toBe(17);
+    });
+
+})
 
 // testing subs function
 

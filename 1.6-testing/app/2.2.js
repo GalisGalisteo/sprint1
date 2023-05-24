@@ -12,6 +12,3 @@ class Person {
 }
 
 module.exports = { Person };
-
-/* const newPerson = new Person("Galis");
-newPerson.dirName(); */

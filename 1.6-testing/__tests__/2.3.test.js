@@ -2,7 +2,7 @@
 
 // 3. Verifica mitjançant tests la creació d'instàncies de la classe abstracta de l'exercici Classes & Arrow Functions N3 E1.
 
-const { CreateAnimals } = require('./2.3');
+const { CreateAnimals } = require('../app/2.3');
 
 describe('CreateAnimals', () => {
     test('if the name is "Sam" and the mood is "happy" it should create a new animal object with those parametres', () => {
