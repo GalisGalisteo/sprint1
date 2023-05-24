@@ -30,6 +30,7 @@ Example: ***galis@Galis-MacBook-Pro-2* 1.6-testing % npm test**
 
 It should retun something like that:
 
+
     PASS  __tests__/2.3.test.js
 
     PASS  __tests__/1.1.test.js
