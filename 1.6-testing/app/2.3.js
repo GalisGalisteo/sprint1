@@ -22,11 +22,11 @@ function CreateAnimals(name, mood) {
     return animal;
 }
 
-try {
+/* try {
     const dog = CreateAnimals('Sam', 'happy');
     dog.hasMood();
-  } catch (error) {
+} catch (error) {
     console.error(error.message);
-  }
+} */
 
-  module.exports = { CreateAnimals }
+module.exports = { CreateAnimals }

@@ -39,102 +39,112 @@ describe('sum', () => {
 
 // testing subs function
 
-test('subs: if there is no parameters', () => {
-    expect(() => subs()).toThrow(Error);
-});
+describe('subs', () => {
 
-test('subs: if there is a letter as a parameter', () => {
-    expect(() => subs('a')).toThrow(Error);
-});
+    test('if there is no parameters', () => {
+        expect(() => subs()).toThrow(Error);
+    });
 
-test('subs: if there is a letter and a number as parameters', () => {
-    expect(() => subs('a', 3)).toThrow(Error);
-});
+    test('if there is a letter as a parameter', () => {
+        expect(() => subs('a')).toThrow(Error);
+    });
 
-test('subs: if there are letters as parameters', () => {
-    expect(() => subs('a', 'b')).toThrow(Error);
-});
+    test('if there is a letter and a number as parameters', () => {
+        expect(() => subs('a', 3)).toThrow(Error);
+    });
 
-test('subs: if there is undefined variables as a parameters', () => {
-    expect(() => subs(a, b)).toThrow(Error);
-});
+    test('if there are letters as parameters', () => {
+        expect(() => subs('a', 'b')).toThrow(Error);
+    });
 
-test('subs: if there is an undefined variable and a number as parameters', () => {
-    expect(() => subs(a, 1)).toThrow(Error);
-});
+    test('if there is undefined variables as a parameters', () => {
+        expect(() => subs(a, b)).toThrow(Error);
+    });
 
-test('subs: using parameters 4 and 3 equal 1', () => {
-    expect(subs(4, 3)).toBe(1);
-});
+    test('if there is an undefined variable and a number as parameters', () => {
+        expect(() => subs(a, 1)).toThrow(Error);
+    });
 
-test('subs: using parameters 12 and 5 equal 7', () => {
-    expect(subs(12, 5)).toBe(7);
+    test('using parameters 4 and 3 equal 1', () => {
+        expect(subs(4, 3)).toBe(1);
+    });
+
+    test('using parameters 12 and 5 equal 7', () => {
+        expect(subs(12, 5)).toBe(7);
+    });
+
 });
 
 // testing mult function
 
-test('mult: if there is no parameters', () => {
-    expect(() => mult()).toThrow(Error);
-});
+describe('mult', () => {
 
-test('mult: if there is a letter as a parameter', () => {
-    expect(() => mult('a')).toThrow(Error);
-});
+    test('if there is no parameters', () => {
+        expect(() => mult()).toThrow(Error);
+    });
 
-test('mult: if there is a letter and a number as parameters', () => {
-    expect(() => mult('a', 3)).toThrow(Error);
-});
+    test('if there is a letter as a parameter', () => {
+        expect(() => mult('a')).toThrow(Error);
+    });
 
-test('mult: if there are letters as parameters', () => {
-    expect(() => mult('a', 'b')).toThrow(Error);
-});
+    test('if there is a letter and a number as parameters', () => {
+        expect(() => mult('a', 3)).toThrow(Error);
+    });
 
-test('mult: if there is undefined variables as a parameters', () => {
-    expect(() => mult(a, b)).toThrow(Error);
-});
+    test('if there are letters as parameters', () => {
+        expect(() => mult('a', 'b')).toThrow(Error);
+    });
 
-test('mult: if there is an undefined variable and a number as parameters', () => {
-    expect(() => mult(a, 1)).toThrow(Error);
-});
+    test('if there is undefined variables as a parameters', () => {
+        expect(() => mult(a, b)).toThrow(Error);
+    });
 
-test('mult: using parameters 4 and 3 equal 1', () => {
-    expect(mult(4, 3)).toBe(12);
-});
+    test('if there is an undefined variable and a number as parameters', () => {
+        expect(() => mult(a, 1)).toThrow(Error);
+    });
 
-test('mult: using parameters 12 and 5 equal 7', () => {
-    expect(mult(12, 5)).toBe(60);
+    test('using parameters 4 and 3 equal 1', () => {
+        expect(mult(4, 3)).toBe(12);
+    });
+
+    test('using parameters 12 and 5 equal 7', () => {
+        expect(mult(12, 5)).toBe(60);
+    });
 });
 
 // testing divd function
 
-test('divd: if there is no parameters', () => {
-    expect(() => divd()).toThrow(Error);
-});
+describe('divd', () => {
 
-test('divd: if there is a letter as a parameter', () => {
-    expect(() => divd('a')).toThrow(Error);
-});
+    test('if there is no parameters', () => {
+        expect(() => divd()).toThrow(Error);
+    });
 
-test('divd: if there is a letter and a number as parameters', () => {
-    expect(() => divd('a', 3)).toThrow(Error);
-});
+    test('if there is a letter as a parameter', () => {
+        expect(() => divd('a')).toThrow(Error);
+    });
 
-test('divd: if there are letters as parameters', () => {
-    expect(() => divd('a', 'b')).toThrow(Error);
-});
+    test('if there is a letter and a number as parameters', () => {
+        expect(() => divd('a', 3)).toThrow(Error);
+    });
 
-test('divd: if there is undefined variables as a parameters', () => {
-    expect(() => divd(a, b)).toThrow(Error);
-});
+    test('if there are letters as parameters', () => {
+        expect(() => divd('a', 'b')).toThrow(Error);
+    });
 
-test('divd: if there is an undefined variable and a number as parameters', () => {
-    expect(() => divd(a, 1)).toThrow(Error);
-});
+    test('if there is undefined variables as a parameters', () => {
+        expect(() => divd(a, b)).toThrow(Error);
+    });
 
-test('divd: using parameters 6 and 3 equal 2', () => {
-    expect(divd(6, 3)).toBe(2);
-});
+    test('if there is an undefined variable and a number as parameters', () => {
+        expect(() => divd(a, 1)).toThrow(Error);
+    });
 
-test('divd: using parameters 12 and 5 equal 2.4', () => {
-    expect(divd(12, 5)).toBe(2.4);
+    test('using parameters 6 and 3 equal 2', () => {
+        expect(divd(6, 3)).toBe(2);
+    });
+
+    test('using parameters 12 and 5 equal 2.4', () => {
+        expect(divd(12, 5)).toBe(2.4);
+    });
 });

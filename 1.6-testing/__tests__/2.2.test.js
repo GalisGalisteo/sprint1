@@ -10,10 +10,10 @@ const MockSayName = jest.fn();
 
 // Mock de la clase Persona
 jest.mock('../app/2.2', () => {
-  return jest.fn().mockImplementation(function (name) {
-    this.name = name;
-    this.sayName = MockSayName;
-  });
+    return jest.fn().mockImplementation(function (name) {
+        this.name = name;
+        this.sayName = MockSayName;
+    });
 });
 
 /* jest.mock('./2.2', () => {
@@ -31,46 +31,48 @@ jest.mock('../app/2.2', () => {
     }
 }) */
 
+describe('Class Person', () => {
 
-test('When calling the sayName method of a Person instance with a valid name, it should return the same name', () => {
-    const name = 'Galis';
-    const person = new Person(name);
-    person.sayName()
-    expect(MockSayName).toHaveBeenCalled();
-});
+    test('When calling the sayName method of a Person instance with a valid name, it should return the same name', () => {
+        const name = 'Galis';
+        const person = new Person(name);
+        person.sayName()
+        expect(MockSayName).toHaveBeenCalled();
+    });
 
-test('if the name is an empty string it should catch an error', () => {
-    const name = '';
-    const stringError = "Please, enter your name.";
-    try {
-        new Person(name);
-    } catch (error) {
-        expect(error.message).toBe(stringError);
-    }
-})
+    test('if the name is an empty string it should catch an error', () => {
+        const name = '';
+        const stringError = "Please, enter your name.";
+        try {
+            new Person(name);
+        } catch (error) {
+            expect(error.message).toBe(stringError);
+        }
+    })
 
-test('if the name is a string with only blank spaces it should catch an error', () => {
-    const name = '  ';
-    const stringError = "Please, enter your name.";
-    try {
-        new Person(name);
-    } catch (error) {
-        expect(error.message).toBe(stringError);
-    }
-})
+    test('if the name is a string with only blank spaces it should catch an error', () => {
+        const name = '  ';
+        const stringError = "Please, enter your name.";
+        try {
+            new Person(name);
+        } catch (error) {
+            expect(error.message).toBe(stringError);
+        }
+    })
 
-test('if the name is a number it should catch an error', () => {
-    const name = 2;
-    const stringError = "Please, enter your name.";
-    try {
-        new Person(name);
-    } catch (error) {
-        expect(error.message).toBe(stringError);
-    }
-})
+    test('if the name is a number it should catch an error', () => {
+        const name = 2;
+        const stringError = "Please, enter your name.";
+        try {
+            new Person(name);
+        } catch (error) {
+            expect(error.message).toBe(stringError);
+        }
+    })
 
-test("Giving a name it should return an object with the name property and value given", () => {
-    const name = "Galis";
-    const newPerson = new Person(name);
-    expect(newPerson.name).toBe(name);
+    test("Giving a name it should return an object with the name property and value given", () => {
+        const name = "Galis";
+        const newPerson = new Person(name);
+        expect(newPerson.name).toBe(name);
+    });
 });

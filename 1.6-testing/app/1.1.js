@@ -38,4 +38,4 @@ const divd = (a, b) => {
     return a / b;
 }
 
-module.exports = {sum, subs, mult, divd};
+module.exports = { sum, subs, mult, divd };

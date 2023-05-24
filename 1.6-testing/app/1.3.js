@@ -57,6 +57,5 @@ const getSalary = (employee) => {
     })
 }
 
-/* getSalary(employees[0]);
- */// Exporting functions
+// Exporting functions
 module.exports = { getEmployee, getSalary };

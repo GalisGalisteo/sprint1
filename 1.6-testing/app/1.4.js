@@ -11,7 +11,7 @@ const newAsyncFunction1 = async (callback) => {
             throw new Error("The callback should be a function.");
         } else if (callback !== newAsyncFunction2) {
             throw new Error("The callback function should be a newAsyncFunction2.");
-        } 
+        }
     }
 }
 
@@ -26,10 +26,5 @@ const newAsyncFunction2 = (asyncTest) => {
         }
     })
 }
-
-// falta
-
-// Crea una altra funció que rebi tres números i calculi la suma dels seus dobles fent servir la funció anterior.
-
 
 module.exports = { newAsyncFunction1, newAsyncFunction2 };
