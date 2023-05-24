@@ -49,7 +49,13 @@ const decryptFiles = (filePathEncryptedHex, filePathEncryptedBase64) => {
 
 decryptFiles('./test-hex-encrypted.txt', './test-base64-encrypted.txt');
 
-/* const decryptFiles = (filePathEncryptedHex, filePathEncryptedBase64) => {
+
+
+
+/* 
+ASYNC NOT WORKING, WANT TO TRY TO FIX IT AND MAKE IT WORK
+
+const decryptFiles = (filePathEncryptedHex, filePathEncryptedBase64) => {
     // decrypt hex file
     fs.readFile(filePathEncryptedHex, (err, data) => {
         if (err) {
@@ -127,3 +133,5 @@ decryptFiles('./test-hex-encrypted.txt', './test-base64-encrypted.txt');
 decryptFiles('./test-hex-encrypted.txt', './test-base64-encrypted.txt'); */
 
 // Inclou un README amb instruccions per a l'execució de cada part.
+
+// Fet! :)
